@@ -7,6 +7,7 @@ import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 
 import Map from "./Map";
 import CarList from "./CarList";
+import AutocompleteComponent from "./AutocompleteInput";
 
 export default function Grid() {
   const { destinationRef, originRef, routerPointer, getInfoLocation } =
@@ -23,31 +24,7 @@ export default function Grid() {
         <div className="card p-2 md:p-6 border roundend-xl">
           <p className="text-xl font-bold">Get a ride</p>
 
-          {isLoaded && (
-            <div className="flex flex-col gap-4 mt-8">
-              <Autocomplete>
-                <input
-                  ref={originRef}
-                  type="text"
-                  name="loc"
-                  id="loc"
-                  placeholder="Pickup Origin"
-                  className="w-full border p-4 bg-[#DFE3EF] placeholder:text-black rounded-lg"
-                />
-              </Autocomplete>
-
-              <Autocomplete>
-                <input
-                  ref={destinationRef}
-                  type="text"
-                  name="dest"
-                  id="dest"
-                  placeholder="Pickup Destination"
-                  className="w-full border p-4 bg-[#DFE3EF] placeholder:text-black rounded-lg"
-                />
-              </Autocomplete>
-            </div>
-          )}
+          {isLoaded && <AutocompleteComponent />}
 
           <button
             className="bg-black w-full my-4 p-4 rounded-lg text-white"
